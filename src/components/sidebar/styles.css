@@ -1,0 +1,97 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.heading_txt_p1 {
+  color: #a50034;
+}
+.heading_txt_p2 {
+  color: #003da5;
+}
+
+.nav_items {
+  display: grid;
+  grid-template-columns: repeat(1);
+  gap: 10px;
+}
+
+.nav_item {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nav_item a {
+  text-decoration: none;
+}
+
+/* Base styles for inactive links */
+.nav_inactive_link {
+  color: #ffffff;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Styles for active links with gradient text */
+.nav_active_link {
+  color: transparent; /* Sets text color to transparent so gradient shows through */
+  background-image: linear-gradient(
+    45deg,
+    #a50034,
+    #003da5
+  ); /* Replace with your gradient colors */
+  background-clip: text;
+  -webkit-background-clip: text; /* For WebKit browsers */
+  transform: scale(1.1); /* Adds a slight zoom effect */
+  transition: background-image 0.3s ease, transform 0.3s ease;
+  display: inline-block; /* Ensures underline width matches the text */
+  position: relative; /* Needed for positioning the underline */
+}
+
+/* Gradient underline with same width as text */
+.nav_active_link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Adjust to position underline directly below text */
+  width: 100%; /* Matches the width of the text */
+  height: 2px; /* Thickness of the underline */
+  background-image: linear-gradient(
+    45deg,
+    #a50034,
+    #003da5
+  ); /* Same gradient as text */
+  opacity: 0.8;
+  transition: width 0.3s ease;
+}
+
+.nav_inactive_link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: transparent;
+  transition: width 0.3s ease;
+}
+
+.fcb_btn {
+  background: linear-gradient(135deg, #a50034, #003da5);
+  color: white;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background 0.3s; /* Smooth transition for background change */
+}
+
+.fcb_btn:hover {
+  background: linear-gradient(
+    135deg,
+    #a50034,
+    #005bb5
+  ); /* Slightly lighter blue on hover */
+}

@@ -1,0 +1,8 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  gap: 20px;
+  font-family: "DM Sans", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}

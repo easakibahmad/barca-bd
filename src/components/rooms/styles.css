@@ -1,0 +1,82 @@
+.rooms {
+  flex: 1;
+  height: 90vh;
+  overflow-y: auto;
+  margin: auto;
+  scroll-behavior: smooth;
+  perspective: 1000px;
+  scroll-snap-type: y mandatory;
+}
+
+.rooms::-webkit-scrollbar {
+  display: none;
+}
+
+.room_img_div {
+  height: 90vh; /* Match parent height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.room_img_div img {
+  border-radius: 12px;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity, filter;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  width: 600px; /* Fixed width */
+  height: 600px; /* Fixed height */
+  max-width: 90%; /* Responsive constraint */
+}
+
+.room_img_div.focused img {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.room_img_div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.room_img_div.focused::after {
+  opacity: 1;
+}
+
+.room_img_div.in-view img {
+  transform: scale(1.1);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.room_img_div.in-view {
+  animation: fadeInScale 0.8s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+  .room_img_div img {
+    width: 90%;
+    height: auto;
+    max-height: 70vh;
+  }
+}
